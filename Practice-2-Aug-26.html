@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Puppy Adoption Page</h1>
+    <h2>Please enter your information to adopt a puppy and we'll email you back.</h2>
+    <p>Please Note: First Name, Last Name, Password, and Email are required</p>
+    <form method="get">
+        <label for="firstName">First Name:</label>
+        <input id="firstName" name="firstName" placeholder="First Name"/>
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" name="lastName" placeholder="Last Name"/>
+        <br/><br/>
+
+        <label for="email">Email:</label>
+        <input id="email" name="email" placeholder="name@email.com" type="email"/>
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password"/>
+        <br/><br/>
+
+        <label>Are you over the age of 18?</label>
+        <br/><br/>
+        <label for="yes"yes>Yes</label>
+        <input id="yes" name="18" type="radio"/>
+        <label for="no">No</label>
+        <input id="no" name="18" type="radio"/>
+        <br/><br/>
+
+        <label>Do you have a Credit Card or PayPal?</label>
+        <br/><br/>
+        <select name="payment">
+            <option value="credit">Credit Card</option>
+            <option value="paypal">PayPal</option>
+        </select>
+        <br/><br/>
+        <input type="submit" value="Submit Feedback">
+    </form>
+</body>
+</html>
