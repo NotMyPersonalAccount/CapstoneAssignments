@@ -65,7 +65,7 @@ func main() {
 		files = append(files, file{
 			Name:         f.Name,
 			CreationTime: creationTime,
-			UpdatedTime:  time.Time{},
+			UpdatedTime:  updatedTime,
 		})
 		return nil
 	})
