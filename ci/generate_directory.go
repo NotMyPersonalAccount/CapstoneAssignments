@@ -1,12 +1,17 @@
 package main
 
 import (
+	_ "embed"
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
+	"os"
 	"sort"
 	"strings"
 	"time"
 )
+
+//go:embed directory_template.html
+var template []byte
 
 // file holds information relevant information on a file for generating the directory.
 type file struct {
@@ -76,4 +81,19 @@ func main() {
 		// Sort by creation time.
 		return fileI.CreationTime.After(fileJ.CreationTime)
 	})
+
+	pages := "\n"
+	// Iterate over each file.
+	for _, f := range files {
+		// Filter out non-HTML files, templates, and the directory file.
+		if !strings.HasSuffix(f.Name, ".html") || strings.Contains(f.Name, "_template") || f.Name == "index.html" {
+			continue
+		}
+		// Append HTML.
+		pages += "\t<li><a href=\"" + f.Name + "\">" + f.Name + "</a></li>\n"
+	}
+	// Replace placeholder with HTML.
+	content := strings.Replace(string(template), "<!-- Pages go here! -->", pages, 1)
+	// Write to index.html
+	os.WriteFile("index.html", []byte(content), 06666)
 }
