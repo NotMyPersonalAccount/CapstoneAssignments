@@ -6,6 +6,9 @@ permissions:
   id-token: write
 jobs:
   update-directory:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,4 +33,5 @@ jobs:
         with:
           path: '.'
       - name: Deploy Pages
+        id: deployment
         uses: actions/deploy-pages@v1
