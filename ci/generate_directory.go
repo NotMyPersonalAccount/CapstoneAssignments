@@ -90,7 +90,7 @@ func main() {
 			continue
 		}
 		// Append HTML.
-		pages += "\t<li><a href=\"" + f.Name + "\">" + f.Name + "</a></li>\n"
+		pages += "\t<li><a href=\"" + f.Name + "\">" + f.Name + "</a> (Created " + f.CreationTime.Format("January 02 2006") + ", Updated " + f.UpdatedTime.Format("January 02 2006") + ")</li>\n"
 	}
 	// Replace placeholder with HTML.
 	content := strings.Replace(string(template), "<!-- Pages go here! -->", pages, 1)
