@@ -1,5 +1,9 @@
 name: Update Directory
 on: [push]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 jobs:
   update-directory:
     runs-on: ubuntu-latest
