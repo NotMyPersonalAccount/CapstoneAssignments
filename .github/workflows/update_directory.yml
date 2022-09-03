@@ -5,7 +5,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: go run ci/generate_directory.go
+      - id: executable-cache
+        uses: actions/cache@v2
+        with:
+          path: generate_directory
+          key: executable-${{ hashFiles('ci/generate_directory.go') }}-${{ hashFiles('go.mod') }}
+      - if: steps.executable-cache.outputs.cache-hit != 'true'
+        run: go build ci/generate_directory.go
+      - run: ./generate_directory
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "automated: update directory"
