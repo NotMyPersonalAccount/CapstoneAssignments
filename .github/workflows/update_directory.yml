@@ -20,10 +20,10 @@ jobs:
         uses: actions/cache@v2
         with:
           path: generate_directory
-          key: executable-${{ hashFiles('ci/generate_directory.go') }}-${{ hashFiles('go.mod') }}
+          key: executable-${{ hashFiles('ci/ci-go/generate_directory.go') }}-${{ hashFiles('ci/ci-go/go.mod') }}
       - name: Build Executable
         if: steps.executable-cache.outputs.cache-hit != 'true'
-        run: go build ci/generate_directory.go
+        run: cd ci/ci-go && go build generate_directory.go && mv generate_directory ../../ && cd ../../
       - name: Run Executable
         run: ./generate_directory
       - name: Setup Pages
