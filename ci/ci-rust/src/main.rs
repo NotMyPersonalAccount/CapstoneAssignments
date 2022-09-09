@@ -1,4 +1,4 @@
-use chrono::{DateTime, Local, TimeZone, Utc};
+use chrono::{DateTime, TimeZone, Utc};
 use git2::{Oid, Repository, RepositoryOpenFlags};
 use std::collections::HashMap;
 use std::fs::File;
@@ -7,8 +7,8 @@ use std::io::Write;
 // FileInfo holds information relevant information on a file for generating the directory.
 struct FileInfo {
     name: String,
-    created_time: DateTime<Local>,
-    updated_time: DateTime<Local>,
+    created_time: DateTime<Utc>,
+    updated_time: DateTime<Utc>,
 }
 
 fn main() {
@@ -33,10 +33,10 @@ fn main() {
         // Get the diff between the current tree and the parent tree.
         let parent = commit.parent(0);
         let diff = match parent {
-			Ok(parent) =>  repo.diff_tree_to_tree(Some(&parent.tree().unwrap()), Some(&tree), None),
-			Err(_) => repo.diff_tree_to_tree(None, Some(&tree), None)
-		};
-		let diff = diff.unwrap();
+            Ok(parent) => repo.diff_tree_to_tree(Some(&parent.tree().unwrap()), Some(&tree), None),
+            Err(_) => repo.diff_tree_to_tree(None, Some(&tree), None),
+        };
+        let diff = diff.unwrap();
 
         // Iterate over each diff.
         diff.foreach(
@@ -70,12 +70,8 @@ fn main() {
         // Add file info to files vec.
         files.push(FileInfo {
             name,
-            created_time: DateTime::from(
-                Utc.timestamp(initial_commit.committer().when().seconds(), 0),
-            ),
-            updated_time: DateTime::from(
-                Utc.timestamp(latest_commit.committer().when().seconds(), 0),
-            ),
+            created_time: Utc.timestamp(initial_commit.committer().when().seconds(), 0),
+            updated_time: Utc.timestamp(latest_commit.committer().when().seconds(), 0),
         });
     });
 

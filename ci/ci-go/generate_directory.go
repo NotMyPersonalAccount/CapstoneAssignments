@@ -64,8 +64,8 @@ func main() {
 		// Add file info to `files` slice.
 		files = append(files, file{
 			Name:         f.Name,
-			CreationTime: creationTime,
-			UpdatedTime:  updatedTime,
+			CreationTime: creationTime.UTC(),
+			UpdatedTime:  updatedTime.UTC(),
 		})
 		return nil
 	})
