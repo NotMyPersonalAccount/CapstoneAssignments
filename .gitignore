@@ -1,2 +1,5 @@
 .idea
+
 ci/ci-rust/target/
+generate_directory_*
+index.html
