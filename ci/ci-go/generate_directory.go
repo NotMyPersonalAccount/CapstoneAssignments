@@ -25,7 +25,7 @@ type file struct {
 
 func main() {
 	// Open the git repository.
-	repo, err := git.PlainOpen(".")
+	repo, err := git.PlainOpenWithOptions(".", &git.PlainOpenOptions{DetectDotGit: true})
 	if err != nil {
 		panic("no git repository in current working directory")
 	}
