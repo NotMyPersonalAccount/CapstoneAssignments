@@ -71,7 +71,7 @@ func main() {
 	})
 
 	// Sort `files` slice.
-	sort.Slice(files, func(i, j int) bool {
+	sort.SliceStable(files, func(i, j int) bool {
 		fileI := files[i]
 		fileJ := files[j]
 		// If both were introduced in the same commit, sort by alphabetical order.
