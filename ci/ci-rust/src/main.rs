@@ -20,23 +20,31 @@ fn main() {
 
     let mut initial_commits: HashMap<String, Oid> = HashMap::new();
     let mut latest_commits: HashMap<String, Oid> = HashMap::new();
-    // Iterate over all commits in the repository.
+    // Iterate over all commits in the repository, latest commits first.
     let mut revwalk = repo.revwalk().unwrap();
     revwalk.push_head().unwrap();
     revwalk.set_sorting(git2::Sort::TIME).unwrap();
     for commit in revwalk {
+        // Get current tree.
         let commit = commit.unwrap();
         let commit = repo.find_commit(commit).unwrap();
-        // Get changed files in the commit.
         let tree = commit.tree().unwrap();
-        let parent_tree = commit.parent(0).unwrap().tree().unwrap();
-        let diff = repo
-            .diff_tree_to_tree(Some(&parent_tree), Some(&tree), None)
-            .unwrap();
+
+        // Get the diff between the current tree and the parent tree.
+        let parent = commit.parent(0);
+        let diff = match parent {
+			Ok(parent) =>  repo.diff_tree_to_tree(Some(&parent.tree().unwrap()), Some(&tree), None),
+			Err(_) => repo.diff_tree_to_tree(None, Some(&tree), None)
+		};
+		let diff = diff.unwrap();
+
+        // Iterate over each diff.
         diff.foreach(
             &mut |delta, _| {
                 let path = delta.new_file().path().unwrap();
+                // Set initial commit for the changed file to the current commit.
                 initial_commits.insert(path.display().to_string(), commit.id());
+                // Set latest commit for the changed file to the current commit if not already set.
                 latest_commits
                     .entry(path.display().to_string())
                     .or_insert(commit.id());
