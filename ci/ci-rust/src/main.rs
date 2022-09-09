@@ -1,4 +1,4 @@
-use chrono::{DateTime, TimeZone, Utc};
+use chrono::{DateTime, Local, TimeZone, Utc};
 use git2::{Oid, Repository, RepositoryOpenFlags};
 use std::collections::HashMap;
 use std::fs::File;
@@ -7,8 +7,8 @@ use std::io::Write;
 // FileInfo holds information relevant information on a file for generating the directory.
 struct FileInfo{
 	name: String,
-	created_time: DateTime<Utc>,
-	updated_time: DateTime<Utc>
+	created_time: DateTime<Local>,
+	updated_time: DateTime<Local>
 }
 
 fn main() {
@@ -47,7 +47,7 @@ fn main() {
 		let name = String::from_utf8(file.path).unwrap();
 		let initial_commit = repo.find_commit(*initial_commits.get(&name).unwrap()).unwrap();
 		// Add file info to files vec.
-		files.push(FileInfo{name, created_time: Utc.timestamp(initial_commit.committer().when().seconds(), 0), updated_time: Utc.timestamp(file.mtime.seconds().into(), 0)});
+		files.push(FileInfo{name, created_time: DateTime::from(Utc.timestamp(initial_commit.committer().when().seconds(), 0)), updated_time: DateTime::from(Utc.timestamp(file.mtime.seconds().into(), 0))});
 	});
 
 	// Sort `files` vec.
