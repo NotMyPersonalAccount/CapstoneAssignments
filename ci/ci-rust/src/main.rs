@@ -61,8 +61,8 @@ fn main() {
 		}
 	});
 
-	// Embed contents of templates/directory.html
-	let template = String::from_utf8(include_bytes!("templates/directory.html").to_vec()).unwrap();
+	// Embed contents of templates/directory_template.html
+	let template = String::from_utf8(include_bytes!("templates/directory_template.html").to_vec()).unwrap();
 	let mut pages = String::from("\n");	
 	// Iterate over each file.
 	files.iter().for_each(|file| {
