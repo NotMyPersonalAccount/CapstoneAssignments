@@ -15,17 +15,30 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Cache Executable
-        id: executable-cache
+
+      - name: Cache Go Executable
+        id: executable-go-cache
+        uses: actions/cache@v2
+        with:
+          path: generate_directory_go
+          key: executable-${{ hashFiles('ci/ci-go/generate_directory.go') }}-${{ hashFiles('ci/ci-go/go.mod') }}
+      - name: Build Go Executable
+        if: steps.executable-go-cache.outputs.cache-hit != 'true'
+        run: cd ci/ci-go && go build generate_directory.go && mv generate_directory ../../generate_directory_go && cd ../../
+
+      - name: Cache Rust Executable
+        id: executable-rust-cache
         uses: actions/cache@v2
         with:
           path: generate_directory
-          key: executable-${{ hashFiles('ci/ci-go/generate_directory.go') }}-${{ hashFiles('ci/ci-go/go.mod') }}
-      - name: Build Executable
-        if: steps.executable-cache.outputs.cache-hit != 'true'
-        run: cd ci/ci-go && go build generate_directory.go && mv generate_directory ../../ && cd ../../
-      - name: Run Executable
-        run: ./generate_directory
+          key: executable-${{ hashFiles('ci/ci-rust/src/main.rs') }}-${{ hashFiles('ci/ci-rust/Cargo.toml') }}
+      - name: Build Rust Executable
+        if: steps.executable-rust-cache.outputs.cache-hit != 'true'
+        run: cd ci/ci-rust && cargo build && mv target/debug/ci-rust ../../generate_directory_rust && cd ../../
+
+      - name: Run Directory Generator
+        run: python ci/run.py
+
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload Artifact
