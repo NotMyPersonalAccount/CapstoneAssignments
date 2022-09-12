@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- COPY AND PASTE YOUR NAVBAR FROM THE OTHER PAGE HERE AS WELL! -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <!--STEP 2:  ADD A DARK NAVBAR HERE WITH A LINK TO A SEPARATE SIGN UP PAGE -->
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Pigsite</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Cool Projects
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://gitlab.gnome.org/GNOME/gnome-shell"
+                    >gnome-shell</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://gitlab.gnome.org/GNOME/Fractal"
+                    >Fractal</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="3.02-Bootstrap-Signup.html"
+                >Sign Up</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CREATE YOUR FORM HERE INSIDE OF A CONTAINER -->
+    <form class="m-4 p-4 rounded-3 bg-light">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          class="form-control"
+          name="username"
+          id="username"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          id="email"
+          aria-describedby="emailHelp"
+        />
+        <div id="emailHelp" class="form-text">
+          We absolutely will share your email to everyone.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="password"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+  </body>
+</html>
