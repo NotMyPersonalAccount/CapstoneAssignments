@@ -102,7 +102,7 @@ fn main() {
         pages += &format!(
             "\t<li><a href=\"{}\">{}</a> (Created {}, Updated {})</li>\n",
             file.name,
-            file.name.Replace("pages/", ""),
+            file.name.replace("pages/", ""),
             file.created_time.format("%B %d %Y"),
             file.updated_time.format("%B %d %Y")
         )
