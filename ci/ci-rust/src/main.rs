@@ -86,9 +86,8 @@ fn main() {
         }
     });
 
-    // Embed contents of templates/directory_template.html
-    let template =
-        String::from_utf8(include_bytes!("templates/directory_template.html").to_vec()).unwrap();
+    // Get template from file.
+    let template = std::fs::read_to_string("ci/directory_template.html").unwrap();
     let mut pages = String::from("\n");
     // Iterate over each file.
     files.iter().for_each(|file| {

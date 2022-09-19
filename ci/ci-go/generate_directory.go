@@ -10,9 +10,6 @@ import (
 	"time"
 )
 
-//go:embed directory_template.html
-var template []byte
-
 // file holds information relevant information on a file for generating the directory.
 type file struct {
 	// Name is the name of the file.
@@ -91,6 +88,11 @@ func main() {
 		}
 		// Append HTML.
 		pages += "\t<li><a href=\"" + f.Name + "\">" + f.Name + "</a> (Created " + f.CreationTime.Format("January 02 2006") + ", Updated " + f.UpdatedTime.Format("January 02 2006") + ")</li>\n"
+	}
+	// Get template from file.
+	template, err := os.ReadFile("ci/directory_template.html")
+	if err != nil {
+		panic(err)
 	}
 	// Replace placeholder with HTML.
 	content := strings.Replace(string(template), "<!-- Pages go here! -->", pages, 1)
