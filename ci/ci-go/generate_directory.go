@@ -87,7 +87,7 @@ func main() {
 			continue
 		}
 		// Append HTML.
-		pages += "\t<li><a href=\"" + f.Name + "\">" + f.Name + "</a> (Created " + f.CreationTime.Format("January 02 2006") + ", Updated " + f.UpdatedTime.Format("January 02 2006") + ")</li>\n"
+		pages += "\t<li><a href=\"" + f.Name + "\">" + strings.Replace(f.Name, "pages/", "") + "</a> (Created " + f.CreationTime.Format("January 02 2006") + ", Updated " + f.UpdatedTime.Format("January 02 2006") + ")</li>\n"
 	}
 	// Get template from file.
 	template, err := os.ReadFile("ci/directory_template.html")
