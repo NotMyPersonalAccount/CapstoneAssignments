@@ -5,3 +5,14 @@
 #need {
   background: #fff38c;
 }
+
+.reason {
+  font-size: 1.125em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
