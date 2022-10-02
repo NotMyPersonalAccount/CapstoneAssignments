@@ -6,13 +6,18 @@
   background: #fff38c;
 }
 
-.reason {
+.reason,
+#sources h1 {
   font-size: 1.125em;
   font-weight: bold;
   text-transform: uppercase;
 }
 
-a {
-  color: black;
-  text-decoration: none;
+#sources div {
+  text-align: center;
+}
+
+#sources ul {
+  display: inline-block;
+  text-align: left;
 }
