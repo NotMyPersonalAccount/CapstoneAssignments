@@ -20,4 +20,5 @@
 #sources ul {
   display: inline-block;
   text-align: left;
+  word-break: break-all;
 }
