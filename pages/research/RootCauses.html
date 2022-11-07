@@ -11,8 +11,100 @@
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles/RootCauses.css" />
   </head>
   <body>
+    <div class="p-4">
+      <h1 class="text-center pb-2">Root Causes</h1>
+      <div class="container text-center border border-dark border-2 rounded">
+        <div class="row" id="causeOne">
+          <div class="col border-end border-dark border-2">
+            <div class="row border-bottom border-dark border-2">
+              <h3>Root Cause #1</h3>
+              <p>Reliability & Uncertainty</p>
+            </div>
+            <div class="row border-bottom border-dark border-2">
+              <div class="col border-end border-dark border-2">
+                <h4>Evidence</h4>
+                <p>Developers are often not paid for contributions.</p>
+              </div>
+              <div class="col">
+                <h4>Explantion</h4>
+                <p>
+                  Developers can stop contributing at any time, leaving projects
+                  unmaintained.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border-end border-dark border-2">
+                <h4>Evidence</h4>
+                <p>Project reputations matter.</p>
+              </div>
+              <div class="col">
+                <h4>Explantion</h4>
+                <p>
+                  Reputable projects are more likely to be trusted, and thus
+                  adopted.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <h3>Implications</h3>
+            <p>
+              This issue can be solved through sponsorship of FLOSS projects.
+              Developers will get funding to work on the project and the project
+              will be more reputable with a company behind it.
+            </p>
+            <p>Examples: GNOME development sponsored by Red Hat</p>
+          </div>
+        </div>
+        <div class="row border-top border-dark border-2" id="causeTwo">
+          <div class="col border-end border-dark border-2">
+            <div class="row border-bottom border-dark border-2">
+              <h3>Root Cause #2</h3>
+              <p>Technological Vendor Lock-In</p>
+            </div>
+            <div class="row border-bottom border-dark border-2">
+              <div class="col border-end border-dark border-2">
+                <h4>Evidence</h4>
+                <p>Organizations may already be using proprietary formats.</p>
+              </div>
+              <div class="col">
+                <h4>Explantion</h4>
+                <p>
+                  Those formats may not be supported, or poorly supported, by
+                  open source software.
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col border-end border-dark border-2">
+                <h4>Evidence</h4>
+                <p>Resources are needed to switch.</p>
+              </div>
+              <div class="col">
+                <h4>Explantion</h4>
+                <p>
+                  It takes financial and human resources to support the switch
+                  away from existing software.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <h3>Implications</h3>
+            <p>
+              This issue can be solved with more common usage of open standards.
+              Therefore, formats can continue to be used both internally and
+              externally for an organization, and less effort is required to
+              migrate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
