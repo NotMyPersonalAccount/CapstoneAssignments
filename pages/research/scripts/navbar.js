@@ -2,7 +2,7 @@ const body = document.querySelector("body");
 const nav = document.createElement("nav");
 nav.className = "navbar navbar-expand-lg navbar-dark bg-dark";
 nav.innerHTML = `<div class="container-fluid">
-<a class="navbar-brand" href="3.02-Bootstrap.html">Research</a>
+<a class="navbar-brand" href="Research.html">Research</a>
 <button
   class="navbar-toggler"
   type="button"
