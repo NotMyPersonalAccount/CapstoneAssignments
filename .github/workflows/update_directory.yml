@@ -18,7 +18,7 @@ jobs:
 
       - name: Cache Go Executable
         id: executable-go-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: generate_directory_go
           key: executable-${{ hashFiles('ci/ci-go/generate_directory.go') }}-${{ hashFiles('ci/ci-go/go.mod') }}
@@ -28,7 +28,7 @@ jobs:
 
       - name: Cache Rust Executable
         id: executable-rust-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: generate_directory_rust
           key: executable-${{ hashFiles('ci/ci-rust/src/main.rs') }}-${{ hashFiles('ci/ci-rust/Cargo.toml') }}
