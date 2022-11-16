@@ -6,6 +6,17 @@
   background: #7fb77e;
 }
 
+#sources {
+  background: #a2d2ff;
+  text-align: left;
+}
+
+.footnote {
+  font-size: 0.55em;
+  vertical-align: text-top;
+  text-decoration: none;
+}
+
 h3,
 h4 {
   margin-top: 0.5rem !important;
