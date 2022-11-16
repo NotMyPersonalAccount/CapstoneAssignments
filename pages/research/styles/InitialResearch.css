@@ -13,11 +13,17 @@
   text-transform: uppercase;
 }
 
+.footnote{
+  font-size: 0.55em;
+  vertical-align: text-top;
+  text-decoration: none;
+}
+
 #sources div {
   text-align: center;
 }
 
-#sources ul {
+#sources ol {
   display: inline-block;
   text-align: left;
   word-break: break-all;
